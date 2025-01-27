@@ -1,0 +1,50 @@
+query GetDoctors($filters: DoctorFilters!) {
+  doctors(filters: $filters) {
+    npi_number
+    name
+    specialty
+    city_state
+    hco
+    num_publications
+    num_clinical_trials
+    num_payments
+  }
+}
+
+query GetFilters {
+  filters {
+    locations {
+      cities
+      states
+      counties
+    }
+    provider {
+      specialties
+      gender
+    }
+    organization {
+      type_2_npi_org
+      health_system
+      hospital_name
+    }
+    industryRelationships {
+      life_science_firms
+      products
+      nature_of_payments
+      years
+    }
+    diagnosis {
+      diagnosis_codes
+      procedure_codes
+      prescriptions
+    }
+    patients {
+      gender
+      age_groups
+    }
+    keyOpinionLeaders {
+      conditions
+      tags
+    }
+  }
+}

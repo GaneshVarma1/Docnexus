@@ -1,0 +1,162 @@
+type Query {
+  doctors(filters: DoctorFilters!): [Doctor!]!
+  filters: FilterGroups!
+}
+
+type Doctor {
+  npi_number: ID!
+  name: String!
+  first_name: String!
+  last_name: String!
+  gender: String!
+  specialty: String!
+  city_state: String!
+  full_address: String!
+  city: String!
+  state: String!
+  county: String!
+  phone: String!
+  email: Boolean!
+  linkedin: String
+  twitter: String
+  hco: String!
+  health_system: String!
+  hospital_name: String!
+  type_2_npi_org: String!
+  num_publications: Int!
+  num_clinical_trials: Int!
+  num_payments: Int!
+  life_science_firms: String!
+  product: String!
+  total_amount: String!
+  nature_of_payments: String!
+  year: String!
+  total_diagnosis: String!
+  total_procedures: String!
+  total_prescriptions: String!
+  patient_gender_ratio: PatientGenderRatio!
+  patient_age_groups: PatientAgeGroups!
+  conditions: [String!]!
+  tags: [String!]!
+  diagnosis_codes: [String!]!
+  procedure_codes: [String!]!
+  prescriptions: [String!]!
+}
+
+type PatientGenderRatio {
+  male: Float!
+  female: Float!
+}
+
+type PatientAgeGroups {
+  age_0_18: Float!
+  age_19_25: Float!
+  age_26_34: Float!
+  age_35_50: Float!
+  age_50_65: Float!
+  age_65_plus: Float!
+}
+
+input DoctorFilters {
+  searchTerm: String
+  locations: LocationFilters
+  provider: ProviderFilters
+  organization: OrganizationFilters
+  industryRelationships: IndustryRelationshipFilters
+  diagnosis: DiagnosisFilters
+  patients: PatientFilters
+  keyOpinionLeaders: KeyOpinionLeaderFilters
+}
+
+input LocationFilters {
+  cities: [String!]
+  states: [String!]
+  counties: [String!]
+}
+
+input ProviderFilters {
+  npi_number: String
+  first_name: String
+  last_name: String
+  specialties: [String!]
+  gender: [String!]
+}
+
+input OrganizationFilters {
+  type_2_npi_org: [String!]
+  health_system: [String!]
+  hospital_name: [String!]
+}
+
+input IndustryRelationshipFilters {
+  life_science_firms: [String!]
+  products: [String!]
+  nature_of_payments: [String!]
+  years: [String!]
+}
+
+input DiagnosisFilters {
+  diagnosis_codes: [String!]
+  procedure_codes: [String!]
+  prescriptions: [String!]
+}
+
+input PatientFilters {
+  gender: [String!]
+  age_groups: [String!]
+}
+
+input KeyOpinionLeaderFilters {
+  conditions: [String!]
+  tags: [String!]
+}
+
+type FilterGroups {
+  locations: LocationFilterGroup!
+  provider: ProviderFilterGroup!
+  organization: OrganizationFilterGroup!
+  industryRelationships: IndustryRelationshipFilterGroup!
+  diagnosis: DiagnosisFilterGroup!
+  patients: PatientFilterGroup!
+  keyOpinionLeaders: KeyOpinionLeaderFilterGroup!
+}
+
+type LocationFilterGroup {
+  cities: [String!]!
+  states: [String!]!
+  counties: [String!]!
+}
+
+type ProviderFilterGroup {
+  specialties: [String!]!
+  gender: [String!]!
+}
+
+type OrganizationFilterGroup {
+  type_2_npi_org: [String!]!
+  health_system: [String!]!
+  hospital_name: [String!]!
+}
+
+type IndustryRelationshipFilterGroup {
+  life_science_firms: [String!]!
+  products: [String!]!
+  nature_of_payments: [String!]!
+  years: [String!]!
+}
+
+type DiagnosisFilterGroup {
+  diagnosis_codes: [String!]!
+  procedure_codes: [String!]!
+  prescriptions: [String!]!
+}
+
+type PatientFilterGroup {
+  gender: [String!]!
+  age_groups: [String!]!
+}
+
+type KeyOpinionLeaderFilterGroup {
+  conditions: [String!]!
+  tags: [String!]!
+}
